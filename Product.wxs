@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:fire="http://schemas.microsoft.com/wix/FirewallExtension">
+	<Product Id="*" Name="CloudStack ServerResource" Language="1033" Version="1.0.0.0" Manufacturer="Citrix" UpgradeCode="48dc066c-97cc-4512-8fa3-52bbe195e075">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="CloudStack ServerResource" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="CloudStack ServerResource" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">			
+			<Component Id="ProductComponent">
+				<!--<File Id="Insert dll name" Name="Insert dll name again" Source="Insert path to dll" Vital="yes" KeyPath="no" DiskId="1"/>-->
+				<File Id="AgentShell.exe" Name="AgentShell.exe" Source="..\AgentShell\bin\Debug\AgentShell.exe" Vital="yes" KeyPath="yes" DiskId="1"/>
+        <fire:FirewallException Id="FWX3" Name="Hyperv Agent" Port="8250" Protocol="tcp"  Scope="localSubnet"/>
+        <ServiceInstall
+					Id="ServiceInstaller"
+					Type="ownProcess"
+					Vital="yes"
+					Name="CloudStack ServerResource"
+					DisplayName="CloudStack ServerResource"
+					Description="CloudStack Agent"
+					Start="auto"
+					Account="LocalSystem"
+					ErrorControl="ignore"
+					Interactive="no"
+              >
+				</ServiceInstall>
+				<ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="CloudStack ServerResource" Wait="yes" />
+			</Component>
+
+      <Component Id="AWSSDK">
+        <File Id="AWSSDK.dll" Name="AWSSDK.dll" Source="..\AgentShell\bin\Debug\AWSSDK.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="HypervResource">
+        <File Id="HypervResource.dll" Name="HypervResource.dll" Source="..\AgentShell\bin\Debug\HypervResource.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="IonicZip">
+        <File Id="Ionic.Zip.dll" Name="Ionic.Zip.dll" Source="..\AgentShell\bin\Debug\Ionic.Zip.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="log4net">
+        <File Id="log4net.dll" Name="log4net.dll" Source="..\AgentShell\bin\Debug\log4net.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="NewtonsoftJson">
+        <File Id="Newtonsoft.Json.dll" Name="Newtonsoft.Json.dll" Source="..\AgentShell\bin\Debug\Newtonsoft.Json.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="SystemNetHttpForwarding">
+        <File Id="System.Net.Http.Formatting.dll" Name="System.Net.Http.Formatting.dll" Source="..\AgentShell\bin\Debug\System.Net.Http.Formatting.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="SystemWebHttp">
+        <File Id="System.Web.Http.dll" Name="System.Web.Http.dll" Source="..\AgentShell\bin\Debug\System.Web.Http.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="SystemWebHttpSelfHost">
+        <File Id="System.Web.Http.SelfHost.dll" Name="System.Web.Http.SelfHost.dll" Source="..\AgentShell\bin\Debug\System.Web.Http.SelfHost.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="WmiWrappers">
+        <File Id="WmiWrappers.dll" Name="WmiWrappers.dll" Source="..\AgentShell\bin\Debug\WmiWrappers.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <!--<Component Id="WmiWrappersMdb">
+        <File Id="WmiWrappers.dll.mdb" Name="WmiWrappers.dll.mdb" Source="..\AgentShell\bin\Debug\WmiWrappers.dll.mdb" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="HypervResourceMdb">
+        <File Id="HypervResource.dll.mdb" Name="HypervResource.dll.mdb" Source="..\AgentShell\bin\Debug\HypervResource.dll.mdb" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+      <Component Id="AgentShellMdb">
+        <File Id="AgentShell.exe.mdb" Name="AgentShell.exe.mdb" Source="..\AgentShell\bin\Debug\AgentShell.exe.mdb" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>-->
+      <Component Id="AgentShellConfig">
+        <File Id="AgentShell.exe.config" Name="AgentShell.exe.config" Source="..\AgentShell\bin\Debug\AgentShell.exe.config" Vital="yes" KeyPath="yes" DiskId="1"/>
+      </Component>
+
+		</ComponentGroup>
+	</Fragment>
+</Wix>
