@@ -8,6 +8,6 @@ To use this source code you have to copy CloudStackAgentSetup project folder in 
 
 You can build the code using msbuild as follows 
 
-*msbuild  CloudAgentSetup.wixproj
+**msbuild  CloudAgentSetup.wixproj**
 
 This will generate the installer in bin/Debug folder 
