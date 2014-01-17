@@ -23,6 +23,8 @@
   <ItemGroup>
     <Compile Include="Product.wxs" />
     <Compile Include="CredentialsDlg.wxs" />
+    <Compile Include="CertificateDlg.wxs" />
+    <Compile Include="CSUI_FeatureTree.wxs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AWSSDK">
