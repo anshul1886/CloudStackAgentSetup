@@ -25,6 +25,7 @@
     <Compile Include="CredentialsDlg.wxs" />
     <Compile Include="CertificateDlg.wxs" />
     <Compile Include="CSUI_FeatureTree.wxs" />
+	<Compile Include="UpgradeDowngradeDlg.wxs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AWSSDK">
@@ -66,7 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AgentShell\AgentShell.csproj">
+    <ProjectReference Include="..\..\ServerResource\AgentShell\AgentShell.csproj">
       <Name>AgentShell</Name>
       <Project>{9060b539-62d0-4e71-a6c6-5944828774e9}</Project>
       <Private>True</Private>
@@ -74,13 +75,17 @@
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
-    <ProjectReference Include="..\HypervResource\HypervResource.csproj">
+    <ProjectReference Include="..\..\ServerResource\HypervResource\HypervResource.csproj">
       <Project>{c963dfff-65ba-4e71-ada5-526a4da4e0b2}</Project>
       <Name>HypervResource</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WmiWrappers\WmiWrappers.csproj">
+    <ProjectReference Include="..\..\ServerResource\WmiWrappers\WmiWrappers.csproj">
       <Project>{db824727-bdc3-437c-a364-7a811d8a160f}</Project>
       <Name>WmiWrappers</Name>
+    </ProjectReference>
+	<ProjectReference Include="..\ACS\ACS.csproj">
+      <Project>{9acc7028-43a0-4e8f-a246-fb8977003d1f}</Project>
+      <Name>ACS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
