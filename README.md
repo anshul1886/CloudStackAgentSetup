@@ -8,7 +8,7 @@ To use this source code you have to copy InstallerSetup project folder in clouds
 
 After copying the installer code go to CloudStackAgentSetup folder
 
-**cd (cloudstack src folder)/plugins/hypervisors/hyperv/DotNet/InstallerSetup/CloudStackAgentSetup **
+**cd (cloudstack src folder)/plugins/hypervisors/hyperv/DotNet/InstallerSetup/CloudStackAgentSetup**
 
 You can build the code using msbuild as follows 
 
