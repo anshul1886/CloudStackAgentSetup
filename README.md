@@ -14,4 +14,6 @@ You can build the code using msbuild as follows
 
 **msbuild.exe  CloudAgentSetup.wixproj**
 
-This will generate the installer in (cloudstack src folder)/plugins/hypervisors/hyperv/DotNet/InstallerSetup/CloudStackAgentSetup/bin/Debug folder 
+This will generate the installer in (cloudstack src folder)/plugins/hypervisors/hyperv/DotNet/InstallerSetup/CloudStackAgentSetup/bin/Debug folder
+
+This code also uses the WixCommonUiExtension.dll with eclipse public license https://github.com/dblock/msiext/blob/master/LICENSE
