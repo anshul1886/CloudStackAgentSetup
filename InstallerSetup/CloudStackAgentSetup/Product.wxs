@@ -10,7 +10,7 @@
     <Property Id="NEWERVERSIONSINSTALLED" Secure="yes" />
     <Property Id="SAMEVERSIONSINSTALLED" Secure="yes" />
     <Upgrade Id="$(var.UpgradeCode)">
-      <UpgradeVersion Minimum="1.0.0.0" Maximum="$(var.ProductVersion)"
+      <UpgradeVersion Minimum="0.1.0.0" Maximum="$(var.ProductVersion)"
                       Property="PREVIOUSVERSIONSINSTALLED"
                       IncludeMinimum="yes" IncludeMaximum="no" />
       <UpgradeVersion Minimum="$(var.ProductVersion)" Maximum="99.0.0.0"
