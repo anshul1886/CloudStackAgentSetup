@@ -22,9 +22,12 @@
     </Upgrade>
 
     <Property Id="CSUPDOWNGRADE" Value="Update"/>
+    <Property Id="INSTALL_CERTIFICATE" Value="True"/>
+    <Property Id="UI" Value="noUi"/>
 
     <InstallExecuteSequence>
       <RemoveExistingProducts Before="InstallInitialize" />
+      <Custom Action='InstallCertificate' After='InstallFiles'>INSTALL_CERTIFICATE = "True" AND NOT Installed AND NOT PREVIOUSVERSIONSINSTALLED AND NOT NEWERVERSIONSINSTALLED AND NOT SAMEVERSIONSINSTALLED AND UI="noUi"</Custom>
     </InstallExecuteSequence>
 
     <Feature Id="ProductFeature" Title="Apache CloudStack Hyper-V Agent" Level="1" AllowAdvertise='no' Absent='disallow' Description="This component will help the CloudStack management server to communicate and manage the Hyper-V host.">
